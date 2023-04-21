@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Campera",
+    "description": "Unisex color blanco",
+    "price": 8500,
+    "thumbail": "./campera",
+    "code": 111,
+    "stock": 100
+  },
+  {
+    "id": 2,
+    "title": "Musculosa",
+    "description": "Blanca Lisa",
+    "price": 1200,
+    "thumbail": "./musculosa",
+    "code": 551,
+    "stock": 80
+  },
+  {
+    "id": 3,
+    "title": "Remera",
+    "description": "Manga larga blanca talle L",
+    "price": 5060,
+    "thumbail": "./remera",
+    "code": 1234,
+    "stock": 50
+  }
+]  {
+    "id": 4,
+    "title": "Gorra",
+    "description": "Negra con vicera",
+    "price": 2200,
+    "thumbail": "./gorra",
+    "code": "abcg",
+    "stock": 550
+  }
+]
