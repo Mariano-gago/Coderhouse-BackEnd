@@ -69,7 +69,7 @@ class ProductManager{
     getProducts = async ()=>{
         try {
             //Obtengo los productos del archivo
-            const productList = await fs.readFile(this.path, 'utf-8');
+            const productList = await fs.readFile(this.path);
             return JSON.parse(productList);
         } catch (error) {
             console.log('Error: No se pudo leer el archivo', error);
@@ -109,21 +109,34 @@ class ProductManager{
 
     //Metodo para eliminar un producto
     deleteProduct = async (id)=>{
+
+        try {
+            //Obtengo el array de productos
+            const getData = await this.getProducts();
+            //console.log('get', getData)
+            //Filtro los productos exceptuando el producto eliminado
+            const filterProducts = getData.filter(product => product.id != id);
+            //console.log('filter', filterProducts);
+            //Guardo en el archivo los productos restantes
+            await fs.writeFile(this.path, JSON.stringify(filterProducts, null,2))
+            console.log('El producto fue eliminado correctamente')
+        } catch (error) {
+            console.log('Error: no se encontro el id a eliminar')
+        }
+
+        /*
         try {
             //Obtengo los productos del archivo con el metodo getProducts y busco el indice por el id
             const getData = await this.getProducts();
             let prodIndex = getData.findIndex(prod => prod.id === id);
-
-            console.log('proIndex', prodIndex);
             //Elimino el producto con metodo splice
-            this.products.splice(prodIndex,1);
-            //console.log('thisproducts', this.products);
+            getData.splice(prodIndex,1);
             //Sobreescribo el archivo con el nuevo array de productos
-            await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+            await fs.writeFile(this.path, JSON.stringify(getData, null, 2));
             console.log('El producto fue eliminado!')
         } catch (error) {
             console.log('Error: no se pudo eliminar el producto', error);
-        }
+        }*/
     }
 }
 
@@ -164,5 +177,5 @@ gestionProduct.getProductById(2);
 gestionProduct.updateProduct(1, {title: 'Campera', description: 'Unisex color blanco', thumbail: './campera' });
 
 //Elimina producto por id
-gestionProduct.deleteProduct(4);
+//gestionProduct.deleteProduct(2);
 
