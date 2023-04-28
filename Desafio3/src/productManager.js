@@ -1,6 +1,6 @@
 //Imports
-const path = require('path');
-const fs = require('fs/promises');
+//import path from 'path';
+import fs from 'fs/promises';
 
 
 //Clase para crear objeto productos
@@ -129,10 +129,12 @@ class ProductManager{
     }
 }
 
+export default ProductManager;
+
 /* Testing */
 
 //Path
-const pathJson = path.join(`${__dirname}/products.json`);
+//const pathJson = `./products.json`;
 //console.log('path', pathJson);
 
 //async function test(){
@@ -140,7 +142,7 @@ const pathJson = path.join(`${__dirname}/products.json`);
 //const gestionProduct = new ProductManager(pathJson);
 
 // Instancia de la clase Products para crear los objetos
-/* const andesIpa = new Products('Andes Origen', 'Ipa Andina', 1850, './AndesIpa', 'Aipa1', 1000);
+/*const andesIpa = new Products('Andes Origen', 'Ipa Andina', 1850, './AndesIpa', 'Aipa1', 1000);
 const bud = new Products('Budwaiser', 'Tradicional rubia', 1100, './bud', 'bud1', 500);
 const stella = new Products('Stella Artois Noir', 'Cerveza negra', 2000, './stellaNoir', 'noir1', 550);
 const patagonia = new Products('Patagonia Weisse', 'Cerveza de trigo', 2350, './weisse', 'pwei', 250);
@@ -156,7 +158,7 @@ const imperial = new Products('Imperial Ipa', 'Cerveza Ipa', 2100, './impipa', '
 
 
 // Agrega los objetos creados con el metodo addProduct
-/* await gestionProduct.addProduct(andesIpa);
+/*await gestionProduct.addProduct(andesIpa);
 await gestionProduct.addProduct(bud); 
 await gestionProduct.addProduct(stella);
 await gestionProduct.addProduct(patagonia);
@@ -166,7 +168,7 @@ await gestionProduct.addProduct(quilmes);
 await gestionProduct.addProduct(aguila);
 await gestionProduct.addProduct(schneider);
 await gestionProduct.addProduct(imperial);
-await gestionProduct.addProduct(imperialGolden);  */
+//await gestionProduct.addProduct(imperialGolden); */
 
 // Verificacion de arreglo con los productos agregados
 //await gestionProduct.getProducts();
