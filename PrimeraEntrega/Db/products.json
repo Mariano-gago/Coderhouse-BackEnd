@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Corona",
+    "description": "Cerveza Mexicana",
+    "price": 1950,
+    "thumbail": "./corona",
+    "code": "cor123",
+    "stock": 1200,
+    "category": "Bebidas Alcoholicas"
+  }
+]
