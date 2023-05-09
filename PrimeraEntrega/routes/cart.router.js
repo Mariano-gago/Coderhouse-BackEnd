@@ -1,21 +1,18 @@
-import CartManager  from "../src/cartManager.js";
-import ProductManager from "../src/productManager.js";
+//Imports
 import { Router } from "express";
-import path from "path";
-import __dirname from "path";
 import {addToCart, createCart, getCartById} from '../controllers/cartsControllers.js';
 
 
-const pathJson = path.join(`${__dirname}/../db/carts.json`);
-
+//Router
 const cartRouter = Router();
-const cartManager = new CartManager();
-const producManager = new ProductManager(pathJson);
 
+//Router crear Carrito
 cartRouter.post('/', createCart);
 
+//Router obtener carrito por su id
 cartRouter.get('/:cid', getCartById);
 
+//Router agregar producto al carrito seleccionado
 cartRouter.post('/:cid/product/:pid', addToCart);
 
 export {cartRouter};
