@@ -1,12 +1,90 @@
 [
   {
     "id": 1,
+    "title": "Stella Artois",
+    "description": "Cerveza Rubia",
+    "price": 2000,
+    "thumbail": "./stellaRubia",
+    "code": "noir1",
+    "stock": 650,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Andes Origen",
+    "description": "Ipa Andina",
+    "price": 1850,
+    "thumbail": "./AndesIpa",
+    "code": "Aipa1",
+    "stock": 1000,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 3,
+    "title": "Budwaiser",
+    "description": "Tradicional rubia",
+    "price": 1100,
+    "thumbail": "./bud",
+    "code": "bud1",
+    "stock": 500,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 4,
+    "title": "Patagonia Weisse",
+    "description": "Cerveza de trigo",
+    "price": 2350,
+    "thumbail": "./weisse",
+    "code": "pwei",
+    "stock": 250,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 5,
     "title": "Corona",
     "description": "Cerveza Mexicana",
     "price": 1950,
     "thumbail": "./corona",
     "code": "cor123",
     "stock": 1200,
-    "category": "Bebidas Alcoholicas"
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 6,
+    "title": "Quilmes Stout",
+    "description": "Cerveza Negra",
+    "price": 850,
+    "thumbail": "./quilStout",
+    "code": "stout5",
+    "stock": 500,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 7,
+    "title": "Peñon del Aguila",
+    "description": "Cerveza Cordobeza",
+    "price": 950,
+    "thumbail": "./paguila",
+    "code": "agui",
+    "stock": 300,
+    "category": "Bebidas alcoholicas",
+    "status": true
+  },
+  {
+    "id": 8,
+    "title": "Schneider",
+    "description": "Cerveza Lager",
+    "price": 900,
+    "thumbail": "./schneider",
+    "code": "sche",
+    "stock": 300,
+    "category": "Bebidas alcoholicas",
+    "status": true
   }
 ]

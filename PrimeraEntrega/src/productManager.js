@@ -1,74 +1,54 @@
 //Imports
 import fs from 'fs/promises';
 
-
-//Clase para crear objeto productos
-class Products{
-    constructor(title, description,price, thumbail, code, stock, category){
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.thumbail = thumbail;
-        this.code = code;
-        this.stock = stock;
-        this.category = category;
-        
-    }
-}
-
-
-//Clase ProductManager
 class ProductManager{
     // Variable privada Id
     #id = 0;
     constructor(path){
         this.path = path;
         this.products = [];
-    }
-
-    //Metodo privado para id autoincrmentable
-    #getId = ()=>{
-        if(this.products.length === 0){
-            return this.#id = 1;
-        }else{
-            return this.#id = this.products[this.products.length-1].id+1;
-        }
-    }
+    };
 
     //Metodo para agregar productos
     addProduct = async (product)=>{
         try {
-            
+            const allProd = await this.getProducts();
+            //Id Autoincrementable
+            if(allProd.length === 0){
+                this.#id = 1;
+            }else{
+                this.#id = allProd[allProd.length-1].id+1;
+            }
             //Destructuracion del objeto
-            const {title, description, price, thumbail, code, stock, category} = product;
+            const {title, description, price, thumbail, code, stock, category, status} = product;
             //Comparacion de codigo existente
-            const usedCode = this.products.some(prod => prod.code === code);
+            const usedCode = allProd.some(prod => prod.code === code);
             //Validacion de codigo y datos ingresado
             if(usedCode){
                     console.log(`El codigo ${code} ya esta en uso`)
-                }else if(title && description && price && thumbail && stock && category ){
-                    this.products.push({
-                        id: this.#getId(),
+                }else if(title && description && price && thumbail && stock && category && thumbail ){
+                    allProd.push({
+                        id: this.#id,
                         title,
                         description,
                         price,
                         thumbail,
                         code,
                         stock,
-                        category
-                        
+                        category,
+                        status: true
                 });
-                console.log('thisproducts', this.products);
-                console.log(`El producto ${title} fue agregado con exito`);
+                console.log('thisproducts', allProd);
+                console.log(`The product with title ${title} was add success`);
                 //Guarda el array de productos en archivo
-                await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+                await fs.writeFile(this.path, JSON.stringify(allProd, null, 2));
             }else{
-                console.log(`Faltan campos por completar`);
+                console.log(`Missing fields to complete`);
             }
         } catch (error) {
                 console.log(error);
-        }
-    }
+        };
+    };
 
     //Metodo que retorna el array de productos
     getProducts = async ()=>{
@@ -77,7 +57,7 @@ class ProductManager{
             const productList = await fs.readFile(this.path, 'utf-8');
             return JSON.parse(productList);
         } catch (error) {
-            console.log('Error: No se pudo leer el archivo', error);
+            console.log("Error: Can't read the file", error);
         } 
     }
 
@@ -88,7 +68,7 @@ class ProductManager{
         //Busco el producto por el id ingresado
         const foundProduct = data.find(product => product.id === id);
         if(foundProduct){
-            console.log('El producto seleccionado es:', foundProduct);
+            console.log('The product selected is:', foundProduct);
             return foundProduct;
         }else{
             console.log('Error: Not Found');
@@ -107,7 +87,7 @@ class ProductManager{
             allData[prodIndex] = {...getData,...data};
             //Sobreescribo el archivo con los nuevos valores
             await fs.writeFile(this.path, JSON.stringify(allData, null, 2));
-            console.log('Producto actualizado correctamente');
+            console.log('Product update succefully');
         } catch (error) {
             console.log('Error: No se pudo actualizar el producto', error);
         }
@@ -119,22 +99,21 @@ class ProductManager{
             //Obtengo los productos del archivo con el metodo getProducts y busco el indice por el id
             const getData = await this.getProducts();
             let product = getData.find(product => product.id == id);
-            //console.log(product);
             if(product){
                 let index = getData.findIndex(prod => prod.id === id);
                 getData.splice(index, 1);
                 await fs.writeFile(this.path, JSON.stringify(getData, null, 2));
-                console.log('El producto fue eliminado!');
+                console.log('Product delete!');
                 return true;
             }else{
-                console.log(`El producto con el id ${id}, no existe`);
+                console.log(`The product with id: ${id}, doesn't exist`);
                 return false;
             }
         } catch (error) {
-            console.log('Error: no se pudo eliminar el producto', error);
-        }
-    }
-}
+            console.log("Error: can't delete product", error);
+        };
+    };
+};
 
 export default ProductManager;
 
