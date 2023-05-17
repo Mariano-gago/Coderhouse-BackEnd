@@ -1,0 +1,65 @@
+<div class="container">
+    <h1> Productos en tiempo real</h1>
+</div>
+
+<!--Formulario de Productos-->
+<div class="container">
+    <form method="post" action="#" id="form">
+        <div class="mb-3">
+            <label for="title" class="form-label">Nombre Producto</label>
+            <input type="text" name="product_title" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripcion</label>
+            <input type="text" name="product_description" class="form-control" id="description">
+        </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Codigo</label>
+            <input type="text" name="product_code" class="form-control" id="code">
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" name="product_price" class="form-control" id="price">
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="text" name="product_stock" class="form-control" id="stock">
+        </div>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria</label>
+            <input type="text" name="product_category" class="form-control" id="category">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Imagen</label>
+            <input type="text" name="product_image" class="form-control" id="image">
+        </div>
+        <button id="btnAdd" type="submit" class="btn btn-primary me-3">Enviar</button>
+        <button id="btnDel" type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+
+    <!--Productos mostrados-->
+    <div class="row">
+        {{#each products}}
+        <div class="col-3">
+            <div class=" my-5 ms-5 card text-center" data-code="{{this.code}}" style="width: 18rem;">
+                <img src="{{this.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                    <p class="card-text">Codigo: {{this.code}}</p>
+                    <p class="card-text">Precio: ${{this.price}}</p>
+                    <p class="card-text">Stock: {{this.stock}}</p>
+                    <p class="card-text">Categoria: {{this.category}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}   
+    </div>
+    <!--Productos agregados con realtimeproducts.js-->
+    <div id="productContainer"></div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/realtimeproducts.js"></script>

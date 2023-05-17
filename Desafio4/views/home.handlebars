@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="text-center">
+        <h1>Bebidas Alcoholicas</h1>
+    </div>
+</div>
+
+<!-- Productos -->
+<div class="container">
+    <div class="row">
+            {{#each products}}
+            <div class="col-3">
+                <div class=" my-5 ms-5 card" data-code="{{this.code}}" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        <p class="card-text">{{this.title}}</p>
+                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text">{{this.price}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>
